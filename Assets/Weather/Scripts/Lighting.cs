@@ -9,7 +9,7 @@ public class Lighting : MonoBehaviour
 
     public float lightIntensity = 1;
 
-    private void Start()
+    private void Awake()
     {
         lighting = GetComponent<Light2D>();
     }

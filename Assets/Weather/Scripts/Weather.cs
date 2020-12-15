@@ -19,18 +19,18 @@ public class Weather : MonoBehaviour
     public float lightIntensity = 1;
     public float soundVolume;
 
-    private void Update()
-    {
-        if (effect != null)
-        {
-            effect.SetRange(effectRange);
-            effect.SetIntensity(effectIntensity);
-            effect.SetDirection(effectDirection);
-        }
+    //private void Update()
+    //{
+    //    if (effect != null)
+    //    {
+    //        effect.SetRange(effectRange);
+    //        effect.SetIntensity(effectIntensity);
+    //        effect.SetDirection(effectDirection);
+    //    }
 
-        if (lighting != null)
-        {
-            lighting.SetIntensity(lightIntensity);
-        }
-    }
+    //    if (lighting != null)
+    //    {
+    //        lighting.SetIntensity(lightIntensity);
+    //    }
+    //}
 }
