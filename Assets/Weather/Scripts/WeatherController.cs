@@ -12,6 +12,16 @@ public class WeatherController : MonoBehaviour
         
     }
 
+    IEnumerator StartWeatherSystem()
+    {
+        foreach (Weather weather in weathers)
+        {
+            weather.gameObject.SetActive(true);
+            yield return new WaitForSeconds(3);
+            weather.gameObject.SetActive(false);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -24,6 +34,8 @@ public class WeatherController : MonoBehaviour
         from.effectDirection = to.effectDirection;
         from.effectIntensity = to.effectIntensity;
         from.effectRange = to.effectRange;
+
+        from.lightIntensity = to.lightIntensity;
     }
 
     IEnumerator LerpWeatherParams(Weather from, Weather to)

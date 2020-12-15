@@ -21,10 +21,16 @@ public class Weather : MonoBehaviour
 
     private void Update()
     {
-        effect.SetRange(effectRange);
-        effect.SetIntensity(effectIntensity);
-        effect.SetDirection(effectDirection);
+        if (effect != null)
+        {
+            effect.SetRange(effectRange);
+            effect.SetIntensity(effectIntensity);
+            effect.SetDirection(effectDirection);
+        }
 
-        lighting.SetIntensity(lightIntensity);
+        if (lighting != null)
+        {
+            lighting.SetIntensity(lightIntensity);
+        }
     }
 }

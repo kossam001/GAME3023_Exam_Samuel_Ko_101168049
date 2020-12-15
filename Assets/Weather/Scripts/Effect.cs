@@ -12,9 +12,10 @@ public class Effect : MonoBehaviour
     private ParticleSystem.ShapeModule particleShape;
     private ParticleSystem.EmissionModule particleEmission;
     private ParticleSystem.VelocityOverLifetimeModule particleVelocity;
+    protected List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
 
     [Header("Effect Transform")]
-    public Vector3 effectRange = new Vector3(1,1,1);
+    public Vector3 effectRange = new Vector3(1, 1, 1);
 
     [Header("Effect Emission")]
     public float effectIntensity;
@@ -62,4 +63,9 @@ public class Effect : MonoBehaviour
     //    particleVelocity.y = effectDirection.y;
     //    particleVelocity.z = effectDirection.z;
     //}
+
+    protected virtual void OnParticleCollision(GameObject other)
+    {
+
+    }
 }
