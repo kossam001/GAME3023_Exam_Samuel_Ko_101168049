@@ -2307,7 +2307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &180459145
 Transform:
   m_ObjectHideFlags: 0
@@ -2315,14 +2315,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180459144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.4, y: 0.78, z: 11.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.399994, y: 0.7799988, z: 11.199997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1969985710}
   - {fileID: 793076878}
-  m_Father: {fileID: 238652696}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &180459146
 MonoBehaviour:
@@ -12005,7 +12005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &238652696
 Transform:
   m_ObjectHideFlags: 0
@@ -12018,7 +12018,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1376097098}
-  - {fileID: 180459145}
   m_Father: {fileID: 2041464978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12034,13 +12033,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7da4a34ed2973e4c9c023e1dc4c637a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weatherStates:
+  - weather:
+    - {fileID: 238652697}
+    - {fileID: 704540140}
+  - weather:
+    - {fileID: 1915270977}
   effect: {fileID: 1376097101}
   effectRange: {x: 20, y: 20, z: 1}
   effectIntensity: 10
   effectDirection: {x: 0, y: -20, z: -20}
-  lighting: {fileID: 757015351}
   lightIntensity: 0.6
   soundVolume: 0
+  weatherDuration: 3
 --- !u!1 &249516764
 GameObject:
   m_ObjectHideFlags: 0
@@ -14677,7 +14682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &704540140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14690,13 +14695,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7da4a34ed2973e4c9c023e1dc4c637a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weatherStates: []
   effect: {fileID: 1026873745}
   effectRange: {x: 20, y: 20, z: 1}
   effectIntensity: 1
   effectDirection: {x: 1, y: -20, z: -20}
-  lighting: {fileID: 757015351}
   lightIntensity: 2
   soundVolume: 0
+  weatherDuration: 3
 --- !u!4 &704540141
 Transform:
   m_ObjectHideFlags: 0
@@ -40695,7 +40701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1915270977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40708,13 +40714,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7da4a34ed2973e4c9c023e1dc4c637a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 552160350}
+  weatherStates:
+  - weather:
+    - {fileID: 238652697}
+  effect: {fileID: 0}
   effectRange: {x: 1, y: 1, z: 1}
   effectIntensity: 10
   effectDirection: {x: 1, y: 1, z: 1}
-  lighting: {fileID: 757015351}
   lightIntensity: 1
   soundVolume: 0
+  weatherDuration: 3
 --- !u!4 &1915270978
 Transform:
   m_ObjectHideFlags: 0
@@ -40808,10 +40817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8dee4e4bca69484fb2c569bb2ae91f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weathers:
-  - {fileID: 1915270977}
-  - {fileID: 238652697}
-  - {fileID: 704540140}
+  weather: {fileID: 0}
+  lighting: {fileID: 757015351}
 --- !u!1 &2129538302
 GameObject:
   m_ObjectHideFlags: 0

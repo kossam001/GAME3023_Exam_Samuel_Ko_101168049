@@ -15,7 +15,11 @@ public class Lightning : Effect
     {
         float originalIntensity = lighting.lightIntensity;
         lighting.SetIntensity(2);
-        yield return new WaitForSeconds(1);
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Change the ligtning spawn rate so it is more random
+        SetIntensity(Random.Range(0.1f, 0.7f));
         lighting.SetIntensity(originalIntensity);
     }
 }

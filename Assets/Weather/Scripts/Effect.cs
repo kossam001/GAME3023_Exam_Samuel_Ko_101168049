@@ -8,17 +8,17 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
-    private ParticleSystem weatherEffect;
-    private ParticleSystem.ShapeModule particleShape;
-    private ParticleSystem.EmissionModule particleEmission;
-    private ParticleSystem.VelocityOverLifetimeModule particleVelocity;
+    protected ParticleSystem weatherEffect;
+    protected ParticleSystem.ShapeModule particleShape;
+    protected ParticleSystem.EmissionModule particleEmission;
+    protected ParticleSystem.VelocityOverLifetimeModule particleVelocity;
     protected List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
 
     [Header("Effect Transform")]
     public Vector3 effectRange = new Vector3(1, 1, 1);
 
     [Header("Effect Emission")]
-    public float effectIntensity;
+    public float effectIntensity;  
 
     [Header("Effect Direction")]
     public Vector3 effectDirection = new Vector3(1, 1, 1);
@@ -40,7 +40,8 @@ public class Effect : MonoBehaviour
 
     public void SetIntensity(float intensity)
     {
-        particleEmission.rateOverTime = intensity;
+        effectIntensity = intensity;
+        particleEmission.rateOverTime = effectIntensity;
     }
 
     public void SetDirection(Vector3 direction)
