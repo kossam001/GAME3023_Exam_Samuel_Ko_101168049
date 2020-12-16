@@ -2302,7 +2302,7 @@ GameObject:
   - component: {fileID: 180459147}
   - component: {fileID: 180459146}
   m_Layer: 0
-  m_Name: Overcast
+  m_Name: OvercastEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2320,8 +2320,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1969985710}
-  m_Father: {fileID: 1456948288}
-  m_RootOrder: 0
+  m_Father: {fileID: 2041464978}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &180459146
 MonoBehaviour:
@@ -12016,10 +12016,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -118.70201, y: 184.25548, z: 200.11848}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1376097098}
+  m_Children: []
   m_Father: {fileID: 2041464978}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &238652697
 MonoBehaviour:
@@ -14114,7 +14113,7 @@ GameObject:
   - component: {fileID: 552160351}
   - component: {fileID: 552160350}
   m_Layer: 0
-  m_Name: SunShine
+  m_Name: SunShineEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14143,12 +14142,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552160349}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1915270978}
-  m_RootOrder: 0
+  m_Father: {fileID: 2041464978}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &576409673
 GameObject:
@@ -14180,7 +14179,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2041464978}
-  m_RootOrder: 4
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &576409675
 AudioSource:
@@ -14713,10 +14712,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 134.19063, y: 127.865906, z: 179.10217}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1026873744}
+  m_Children: []
   m_Father: {fileID: 2041464978}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &757015348
 GameObject:
@@ -14748,7 +14746,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2041464978}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &757015350
 MonoBehaviour:
@@ -18589,7 +18587,7 @@ GameObject:
   - component: {fileID: 1026873746}
   - component: {fileID: 1026873745}
   m_Layer: 0
-  m_Name: Lightning
+  m_Name: LightningEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18603,13 +18601,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026873743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -252.89264, y: 66.08957, z: 32.216305}
+  m_LocalPosition: {x: -118.70201, y: 193.95547, z: 211.31848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7896343}
   - {fileID: 1291134628}
-  m_Father: {fileID: 704540141}
-  m_RootOrder: 0
+  m_Father: {fileID: 2041464978}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &1026873745
 MonoBehaviour:
@@ -28552,7 +28550,7 @@ GameObject:
   - component: {fileID: 1376097099}
   - component: {fileID: 1376097101}
   m_Layer: 0
-  m_Name: Rain
+  m_Name: RainEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28565,14 +28563,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376097097}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.7, z: 11.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -118.70201, y: 193.95547, z: 211.31848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1100645559}
   - {fileID: 194350342}
-  m_Father: {fileID: 238652696}
-  m_RootOrder: 0
+  m_Father: {fileID: 2041464978}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &1376097099
 ParticleSystemRenderer:
@@ -33398,10 +33396,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 180459145}
+  m_Children: []
   m_Father: {fileID: 2041464978}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1456948289
 MonoBehaviour:
@@ -35916,10 +35913,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 552160351}
+  m_Children: []
   m_Father: {fileID: 2041464978}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1969985709
 GameObject:
@@ -35979,12 +35975,16 @@ Transform:
   m_LocalPosition: {x: 118.70201, y: -184.25548, z: -200.11848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1915270978}
+  - {fileID: 1456948288}
   - {fileID: 238652696}
   - {fileID: 704540141}
-  - {fileID: 1915270978}
+  - {fileID: 552160351}
+  - {fileID: 180459145}
+  - {fileID: 1026873744}
+  - {fileID: 1376097098}
   - {fileID: 757015349}
   - {fileID: 576409674}
-  - {fileID: 1456948288}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

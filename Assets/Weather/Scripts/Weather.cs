@@ -43,7 +43,7 @@ public class Weather : MonoBehaviour
         // Active time
         foreach (Effect effect in effects)
         {
-            EffectData data = effectDataDict[effect.name];
+            EffectData data = effectDataDict[effect.effectName];
 
             // Instead of turning the entire particle system off, keep on but stop emission
             // That way particles don't vanish into thin air

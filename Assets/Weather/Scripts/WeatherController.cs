@@ -25,6 +25,8 @@ public class WeatherController : MonoBehaviour
     {
         while (true)
         {
+
+
             // Turn on current weather
             currentWeather.ToggleWeather(true);
             lighting.SetIntensity(currentWeather.lightIntensity);
@@ -72,10 +74,5 @@ public class WeatherController : MonoBehaviour
         //from.effectRange = to.effectRange;
 
         //from.lightIntensity = to.lightIntensity;
-    }
-
-    IEnumerator LerpWeatherParams(Weather from, Weather to)
-    {
-        yield return null;
     }
 }
