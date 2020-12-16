@@ -19,7 +19,12 @@ public class Lightning : Effect
         yield return new WaitForSeconds(0.5f);
 
         // Change the ligtning spawn rate so it is more random
-        SetIntensity(Random.Range(0.1f, 0.7f));
+        // Need a check because the particle system does not immediately 
+        // stop when intensity is set to 0
+        if (effectIntensity > 0)
+        {
+            SetIntensity(Random.Range(0.1f, 0.7f));
+        }
         lighting.SetIntensity(originalIntensity);
     }
 }

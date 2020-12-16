@@ -3676,8 +3676,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0, b: 0, a: 0.19607843}
-        key1: {r: 0, g: 0, b: 0, a: 0.2509804}
+        key0: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0.19607843}
+        key1: {r: 0.75686276, g: 0.75686276, b: 0.75686276, a: 0.2509804}
         key2: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0.19607843}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -12034,8 +12034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionWeathers:
-  - {fileID: 1915270977}
-  weatherDuration: 20
+  - {fileID: 704540140}
+  weatherDuration: 10
   effects:
   - {fileID: 1376097101}
   effectData:
@@ -14679,7 +14679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &704540140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14692,11 +14692,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7da4a34ed2973e4c9c023e1dc4c637a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionWeathers: []
-  weatherDuration: 3
-  effects: []
-  effectData: []
-  lightIntensity: 2
+  transitionWeathers:
+  - {fileID: 238652697}
+  weatherDuration: 10
+  effects:
+  - {fileID: 1376097101}
+  - {fileID: 1026873745}
+  effectData:
+  - {fileID: 11400000, guid: 748fbea31608bb84d8d0d73e88366fb0, type: 2}
+  - {fileID: 11400000, guid: 5df58190c9ab29541860a409a2989fa9, type: 2}
+  lightIntensity: 0.3
   soundVolume: 0
 --- !u!4 &704540141
 Transform:
@@ -18618,10 +18623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0a12b06925d9f428f88e0ddc1806c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectName: 
+  effectName: Lightning
   effectRange: {x: 20, y: 20, z: 1}
   effectIntensity: 0
-  effectDirection: {x: 1, y: -20, z: -20}
+  effectDirection: {x: 1, y: -90, z: -20}
   lighting: {fileID: 757015351}
 --- !u!199 &1026873746
 ParticleSystemRenderer:
@@ -33411,7 +33416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionWeathers:
-  - {fileID: 1915270977}
   - {fileID: 238652697}
   weatherDuration: 5
   effects:

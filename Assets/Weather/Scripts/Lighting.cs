@@ -16,6 +16,7 @@ public class Lighting : MonoBehaviour
 
     public void SetIntensity(float intensity)
     {
-        lighting.intensity = intensity;
+        lightIntensity = intensity;
+        lighting.intensity = lightIntensity;
     }
 }
