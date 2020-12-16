@@ -18,7 +18,8 @@ public class Effect : MonoBehaviour
     public Vector3 effectRange = new Vector3(1, 1, 1);
 
     [Header("Effect Emission")]
-    public float effectIntensity;  
+    public float effectIntensity; // Changes
+    public float maxIntensity; // Mostly Fixed
 
     [Header("Effect Direction")]
     public Vector3 effectDirection = new Vector3(1, 1, 1);
@@ -26,11 +27,19 @@ public class Effect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //maxIntensity = effectIntensity;
         weatherEffect = GetComponent<ParticleSystem>();
 
-        particleShape = weatherEffect.shape;
-        particleEmission = weatherEffect.emission;
-        particleVelocity = weatherEffect.velocityOverLifetime;
+        if (weatherEffect != null)
+        {
+            particleShape = weatherEffect.shape;
+            particleEmission = weatherEffect.emission;
+            particleVelocity = weatherEffect.velocityOverLifetime;
+
+            SetRange(effectRange);
+            SetIntensity(effectIntensity);
+            SetDirection(effectDirection);
+        }
     }
 
     public void SetRange(Vector3 range)

@@ -1,34 +1,40 @@
 ﻿/*
  * Weather consists of lights, effects, and sound.
- */ 
-
+ */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Allow for multiple weather effects by making it a list of weathers
-[System.Serializable]
-public class WeatherState
-{
-    public List<Weather> weather;
-}
-
 public class Weather : MonoBehaviour
 {
-    // For weather transition
-    public List<WeatherState> weatherStates;
-    public Effect effect;
+    public List<Weather> transitionWeathers;
+    public float weatherDuration = 3;
 
-    public Vector3 effectRange = new Vector3(1, 1, 1);
-    public float effectIntensity = 10;
-    public Vector3 effectDirection = new Vector3(1, 1, 1);
+    // For weather transition
+    public List<Effect> effects;
+
+    //public Vector3 effectRange = new Vector3(1, 1, 1);
+    //public float effectIntensity = 10;
+    //public Vector3 effectDirection = new Vector3(1, 1, 1);
 
     //public Lighting lighting;
 
     public float lightIntensity = 1;
     public float soundVolume;
 
-    public float weatherDuration = 3;
+    public void ToggleWeather(bool isOn)
+    {
+        //gameObject.SetActive(true);
+        // Active time
+        foreach (Effect effect in effects)
+        {
+            //effect.gameObject.SetActive(isOn);
+            // Instead of turning the entire particle system off, keep on but stop emission
+            // That way particles don't vanish into thin air
+            effect.SetIntensity(Convert.ToInt32(isOn) * effect.maxIntensity);
+        }
+    }
 
     //private void Update()
     //{

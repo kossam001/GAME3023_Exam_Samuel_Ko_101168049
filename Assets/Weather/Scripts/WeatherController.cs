@@ -12,7 +12,7 @@ public enum WeatherCondition
 
 public class WeatherController : MonoBehaviour
 {
-    public Weather weather; // Starting weather
+    public Weather currentWeather; // Starting weather
     public Lighting lighting;
 
     // Start is called before the first frame update
@@ -23,18 +23,23 @@ public class WeatherController : MonoBehaviour
 
     IEnumerator StartWeatherSystem()
     {
-        // Active time
-        weather.gameObject.SetActive(true);
-        lighting.SetIntensity(weather.lightIntensity);
+        while (true)
+        {
+            // Turn on current weather
+            currentWeather.ToggleWeather(true);
+            lighting.SetIntensity(currentWeather.lightIntensity);
 
-        yield return new WaitForSeconds(weather.weatherDuration);
+            yield return new WaitForSeconds(currentWeather.weatherDuration);
 
-        // Transition to next weather state
+            // Transition to next weather state
 
-        WeatherState nextWeatherState = weather.weatherStates[Random.Range(0, weather.weatherStates.Count)];
+            Weather nextWeather = currentWeather.transitionWeathers[Random.Range(0, currentWeather.transitionWeathers.Count)];
+            yield return StartCoroutine(WeatherTransition(currentWeather, nextWeather));
 
-        //yield return StartCoroutine(WeatherTransition(weathers[i], weathers[i + 1]));
-            //weathers[i].gameObject.SetActive(false);
+            // Turn off current weather
+            currentWeather.ToggleWeather(false);
+            currentWeather = nextWeather;
+        }
     }
 
     // Update is called once per frame
@@ -44,23 +49,23 @@ public class WeatherController : MonoBehaviour
     }
 
     // https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/#how_to_use_lerp_in_unity
-    IEnumerator WeatherTransition(WeatherState from, WeatherState to)
+    IEnumerator WeatherTransition(Weather from, Weather to)
     {
-        //float duration = 1.0f;
-        //float elapsedTime = 0.0f;
-        //float lightIntensity = from.lightIntensity;
+        float duration = 1.0f;
+        float elapsedTime = 0.0f;
+        float lightIntensity = from.lightIntensity;
 
-        //while (elapsedTime <= duration)
-        //{
-        //    lightIntensity = Mathf.Lerp(from.lightIntensity, to.lightIntensity, elapsedTime / duration);
-        //    lighting.SetIntensity(lightIntensity);
-        //    elapsedTime += Time.deltaTime;
+        while (elapsedTime <= duration)
+        {
+            lightIntensity = Mathf.Lerp(from.lightIntensity, to.lightIntensity, elapsedTime / duration);
+            lighting.SetIntensity(lightIntensity);
+            elapsedTime += Time.deltaTime;
             yield return null;
-        //}
+        }
 
 
         //StartCoroutine()
-        
+
 
         //from.effectDirection = to.effectDirection;
         //from.effectIntensity = to.effectIntensity;
