@@ -2,14 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeatherCondition
-{
-    SUNNY,
-    OVERCAST,
-    RAINING,
-    THUNDERSTORM
-}
-
 public class WeatherController : MonoBehaviour
 {
     public Weather currentWeather; // Starting weather
@@ -35,6 +27,7 @@ public class WeatherController : MonoBehaviour
         // Turn on current weather
         currentWeather.ToggleWeather(true);
         lighting.SetIntensity(currentWeather.lightIntensity);
+        currentWeather.SetSoundVolume(1);
 
         // Using a timer instead of WaitFor so that the timer can be modified in the inspector
         while (weatherTimer > 0)
@@ -66,7 +59,7 @@ public class WeatherController : MonoBehaviour
         {
             if (!ReferenceEquals(currentWeather, currentWeatherChecker))
             {
-                // Reworking the references
+                // Reworking the references so that system does not get confused
                 nextWeather = currentWeather;
                 currentWeather = currentWeatherChecker;
 
@@ -84,10 +77,20 @@ public class WeatherController : MonoBehaviour
         float elapsedTime = 0.0f;
         float lightIntensity = from.lightIntensity;
 
+        float fromVolume = from.soundVolume;
+        float toVolume = to.soundVolume;
+
         while (elapsedTime <= duration)
         {
             lightIntensity = Mathf.Lerp(from.lightIntensity, to.lightIntensity, elapsedTime / duration);
             lighting.SetIntensity(lightIntensity);
+
+            // Turn off current sound
+            from.SetSoundVolume(Mathf.Lerp(fromVolume, 0, elapsedTime / duration));
+
+            // Turn on next sound
+            to.SetSoundVolume(Mathf.Lerp(toVolume, 1, elapsedTime / duration));
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
