@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ * Special weather effect that requires OnParticleCollision
+ */ 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Lightning : Effect
 {
-    public Lighting lighting;
+    public WeatherLighting lighting;
 
     protected override void OnParticleCollision(GameObject other)
     {
@@ -13,6 +17,7 @@ public class Lightning : Effect
 
     IEnumerator Flash()
     {
+        // Brighten the scene significantly
         float originalIntensity = lighting.lightIntensity;
         lighting.SetIntensity(2);
 
@@ -25,6 +30,8 @@ public class Lightning : Effect
         {
             SetIntensity(Random.Range(0.1f, 0.7f));
         }
+
+        // Restore lighting
         lighting.SetIntensity(originalIntensity);
     }
 }

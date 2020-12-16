@@ -1,5 +1,5 @@
 ﻿/*
- * Weather consists of lights, effects, and sound.
+ * Weather consists of lights, effects, and sound.  The weather state.
  */
 using System;
 using System.Collections;
@@ -10,6 +10,7 @@ public class Weather : MonoBehaviour
 {
     [Header("Weather Setup")]
     public List<Weather> transitionWeathers;
+
     [Tooltip("Probability of the weather happening between 0 and 1")]
     public List<float> probability;
     public float weatherDuration = 3;
@@ -24,18 +25,13 @@ public class Weather : MonoBehaviour
 
     private Dictionary<string, EffectData> effectDataDict;
 
-    //public Vector3 effectRange = new Vector3(1, 1, 1);
-    //public float effectIntensity = 10;
-    //public Vector3 effectDirection = new Vector3(1, 1, 1);
-
-    //public Lighting lighting;
-
     [Header("Scene Lighting")]
     [Tooltip("The amount of lighting during the weather state")]
     public float lightIntensity = 1;
 
     [Header("Weather Sounds")]
-    public float soundVolume = 0;
+    public float maxSoundVolume = 1;
+    public float currentVolume = 0;
     private AudioSource soundPlayer;
 
     private void Start()
@@ -43,7 +39,7 @@ public class Weather : MonoBehaviour
         effectDataDict = new Dictionary<string, EffectData>();
 
         soundPlayer = GetComponent<AudioSource>();
-        soundPlayer.volume = soundVolume;
+        soundPlayer.volume = 0;
 
         // Create a dictionary for the effect for faster access
         foreach (EffectData data in effectData)
@@ -67,7 +63,7 @@ public class Weather : MonoBehaviour
 
     public void SetSoundVolume(float volume)
     {
-        soundVolume = volume;
-        soundPlayer.volume = soundVolume;
+        currentVolume = volume;
+        soundPlayer.volume = Mathf.Min(maxSoundVolume, currentVolume);
     }
 }

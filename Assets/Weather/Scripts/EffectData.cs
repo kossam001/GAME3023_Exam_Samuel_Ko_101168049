@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * Holds effect parameters, meant to be used so that Weather can have multiple particle effects
+ */ 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

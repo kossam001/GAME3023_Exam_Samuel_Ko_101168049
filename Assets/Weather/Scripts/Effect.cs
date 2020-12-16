@@ -10,10 +10,12 @@ public class Effect : MonoBehaviour
 {
     public string effectName;
 
+    // Parameters from the ParticleSystem
     protected ParticleSystem weatherEffect;
     protected ParticleSystem.ShapeModule particleShape;
     protected ParticleSystem.EmissionModule particleEmission;
     protected ParticleSystem.VelocityOverLifetimeModule particleVelocity;
+    // For collision events
     protected List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
 
     [Header("Effect Transform")]
@@ -29,9 +31,9 @@ public class Effect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //maxIntensity = effectIntensity;
         weatherEffect = GetComponent<ParticleSystem>();
 
+        // Initialize weather effect
         if (weatherEffect != null)
         {
             particleShape = weatherEffect.shape;
@@ -46,7 +48,8 @@ public class Effect : MonoBehaviour
 
     public void SetRange(Vector3 range)
     {
-        particleShape.scale = range;
+        effectRange = range;
+        particleShape.scale = effectRange;
     }
 
     public void SetIntensity(float intensity)
@@ -57,27 +60,12 @@ public class Effect : MonoBehaviour
 
     public void SetDirection(Vector3 direction)
     {
-        particleVelocity.x = direction.x;
-        particleVelocity.y = direction.y;
-        particleVelocity.z = direction.z;
+        effectDirection = direction;
+
+        particleVelocity.x = effectDirection.x;
+        particleVelocity.y = effectDirection.y;
+        particleVelocity.z = effectDirection.z;
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    //particleShape.enabled = true;
-    //    particleShape.shapeType = ParticleSystemShapeType.Box;
-    //    particleShape.scale = effectRange;
-
-    //    particleEmission.rateOverTime = effectIntensity;
-
-    //    particleVelocity.x = effectDirection.x;
-    //    particleVelocity.y = effectDirection.y;
-    //    particleVelocity.z = effectDirection.z;
-    //}
-
-    protected virtual void OnParticleCollision(GameObject other)
-    {
-
-    }
+    protected virtual void OnParticleCollision(GameObject other) {}
 }

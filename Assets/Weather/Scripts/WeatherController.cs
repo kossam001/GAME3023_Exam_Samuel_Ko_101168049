@@ -1,16 +1,26 @@
-﻿using System.Collections;
+﻿/*
+ * The weather system: controls transitions between weather states;
+ */ 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WeatherController : MonoBehaviour
 {
+    [Header("Weather")]
     public Weather currentWeather; // Starting weather
     private Weather nextWeather; // The next weather
     private Weather currentWeatherChecker; // Check if weather changed externally
 
-    public Lighting lighting;
+    [Tooltip("Amount of time to transition from one weather state to another")]
+    public float transitionDuration = 1;
     public float weatherTimer;
 
+    [Header("Lighting")]
+    public WeatherLighting lighting;
+
+    [Header("Weather System Volume")]
     public float maxVolume = 1;
 
     // Start is called before the first frame update
@@ -60,10 +70,11 @@ public class WeatherController : MonoBehaviour
 
     IEnumerator TransitionWeather(Weather nextWeather)
     {
+        // Turn off current weather before transitioning because the particles takes time to despawn
+        currentWeather.ToggleWeather(false);
+
         yield return StartCoroutine(WeatherTransition(currentWeather, nextWeather));
 
-        // Turn off current weather
-        currentWeather.ToggleWeather(false);
         currentWeather = nextWeather;
 
         StartCoroutine(StartWeatherSystem());
@@ -74,6 +85,7 @@ public class WeatherController : MonoBehaviour
     {
         if (weatherTimer > 0)
         {
+            // If the current weather has changed
             if (!ReferenceEquals(currentWeather, currentWeatherChecker))
             {
                 // Reworking the references so that system does not get confused
@@ -87,18 +99,20 @@ public class WeatherController : MonoBehaviour
         }
     }
 
+    // Smoothly transition between weather states
     // https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/#how_to_use_lerp_in_unity
     IEnumerator WeatherTransition(Weather from, Weather to)
     {
-        float duration = 1.0f;
+        float duration = transitionDuration;
         float elapsedTime = 0.0f;
         float lightIntensity = from.lightIntensity;
 
-        float fromVolume = from.soundVolume;
-        float toVolume = to.soundVolume;
+        float fromVolume = from.currentVolume;
+        float toVolume = to.currentVolume;
 
         while (elapsedTime <= duration)
         {
+            // Transition scene lighting
             lightIntensity = Mathf.Lerp(from.lightIntensity, to.lightIntensity, elapsedTime / duration);
             lighting.SetIntensity(lightIntensity);
 
@@ -106,7 +120,7 @@ public class WeatherController : MonoBehaviour
             from.SetSoundVolume(Mathf.Lerp(fromVolume, 0, elapsedTime / duration));
 
             // Turn on next sound
-            to.SetSoundVolume(Mathf.Lerp(toVolume, maxVolume, elapsedTime / duration));
+            to.SetSoundVolume(Mathf.Lerp(toVolume, Mathf.Min(maxVolume, to.maxSoundVolume), elapsedTime / duration));
 
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -114,6 +128,6 @@ public class WeatherController : MonoBehaviour
 
         // Round out the volume
         from.SetSoundVolume(0);
-        to.SetSoundVolume(maxVolume);
+        to.SetSoundVolume(Mathf.Min(maxVolume, to.maxSoundVolume));
     }
 }

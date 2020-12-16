@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿/*
+ * Controls global lighting for weather system
+ */ 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class Lighting : MonoBehaviour
+public class WeatherLighting : MonoBehaviour
 {
     private Light2D lighting;
 
