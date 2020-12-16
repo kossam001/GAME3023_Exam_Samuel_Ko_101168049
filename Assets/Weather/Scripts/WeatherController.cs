@@ -12,11 +12,8 @@ public enum WeatherCondition
 
 public class WeatherController : MonoBehaviour
 {
-    [Tooltip("Do not change this during runtime")]
     public Weather currentWeather; // Starting weather
-
-    [Tooltip("Set this to change current weather")]
-    public Weather nextWeather; // The next weather
+    private Weather nextWeather; // The next weather
     private Weather currentWeatherChecker; // Check if weather changed externally
 
     public Lighting lighting;
@@ -65,11 +62,18 @@ public class WeatherController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nextWeather != null && weatherTimer > 0)
+        if (weatherTimer > 0)
         {
-            StopAllCoroutines();
-            weatherTimer = -1000;
-            StartCoroutine(TransitionWeather(nextWeather));
+            if (!ReferenceEquals(currentWeather, currentWeatherChecker))
+            {
+                // Reworking the references
+                nextWeather = currentWeather;
+                currentWeather = currentWeatherChecker;
+
+                StopAllCoroutines();
+                weatherTimer = -1000;
+                StartCoroutine(TransitionWeather(nextWeather));
+            }
         }
     }
 
