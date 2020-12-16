@@ -12036,6 +12036,9 @@ MonoBehaviour:
   transitionWeathers:
   - {fileID: 704540140}
   - {fileID: 1915270977}
+  probability:
+  - 0.5
+  - 0.5
   weatherDuration: 10
   effects:
   - {fileID: 1376097101}
@@ -19435,6 +19438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionWeathers:
   - {fileID: 238652697}
+  probability: []
   weatherDuration: 10
   effects:
   - {fileID: 1376097101}
@@ -19566,7 +19570,7 @@ GameObject:
   - component: {fileID: 757015350}
   - component: {fileID: 757015351}
   m_Layer: 0
-  m_Name: Sunlight
+  m_Name: WeatherLighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38253,6 +38257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionWeathers:
   - {fileID: 238652697}
+  probability: []
   weatherDuration: 5
   effects:
   - {fileID: 180459146}
@@ -40834,6 +40839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionWeathers:
   - {fileID: 1456948289}
+  probability: []
   weatherDuration: 3
   effects:
   - {fileID: 552160350}
@@ -41067,6 +41073,7 @@ MonoBehaviour:
   currentWeather: {fileID: 1915270977}
   lighting: {fileID: 757015351}
   weatherTimer: 0
+  maxVolume: 0.25
 --- !u!1 &2129538302
 GameObject:
   m_ObjectHideFlags: 0

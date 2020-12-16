@@ -11,6 +11,8 @@ public class WeatherController : MonoBehaviour
     public Lighting lighting;
     public float weatherTimer;
 
+    public float maxVolume = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,23 +23,38 @@ public class WeatherController : MonoBehaviour
     {
         nextWeather = null;
 
+        // Used for overriding current weather
         currentWeatherChecker = currentWeather;
         weatherTimer = currentWeather.weatherDuration;
 
         // Turn on current weather
         currentWeather.ToggleWeather(true);
         lighting.SetIntensity(currentWeather.lightIntensity);
-        currentWeather.SetSoundVolume(1);
+        currentWeather.SetSoundVolume(maxVolume);
 
         // Using a timer instead of WaitFor so that the timer can be modified in the inspector
         while (weatherTimer > 0)
         {
             weatherTimer -= Time.deltaTime;
-
             yield return null;
         }
 
-        nextWeather = currentWeather.transitionWeathers[Random.Range(0, currentWeather.transitionWeathers.Count)];
+        float randomRoll = Random.Range(0.0f, 1.0f);
+        float chanceSum = 0;
+
+        // Setting next transition to be the last weather in the list be default, in case the user does not use the correct weights
+        nextWeather = currentWeather.transitionWeathers[currentWeather.transitionWeathers.Count - 1];
+
+        for (int i = 0; i < Mathf.Min(currentWeather.transitionWeathers.Count, currentWeather.probability.Count); i++)
+        {
+            chanceSum += currentWeather.probability[i];
+            if (randomRoll <= chanceSum)
+            {
+                nextWeather = currentWeather.transitionWeathers[i];
+                break;
+            }
+        }
+
         StartCoroutine(TransitionWeather(nextWeather));
     }
 
@@ -89,10 +106,14 @@ public class WeatherController : MonoBehaviour
             from.SetSoundVolume(Mathf.Lerp(fromVolume, 0, elapsedTime / duration));
 
             // Turn on next sound
-            to.SetSoundVolume(Mathf.Lerp(toVolume, 1, elapsedTime / duration));
+            to.SetSoundVolume(Mathf.Lerp(toVolume, maxVolume, elapsedTime / duration));
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        // Round out the volume
+        from.SetSoundVolume(0);
+        to.SetSoundVolume(maxVolume);
     }
 }

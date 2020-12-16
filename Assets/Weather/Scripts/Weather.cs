@@ -8,13 +8,17 @@ using UnityEngine;
 
 public class Weather : MonoBehaviour
 {
+    [Header("Weather Setup")]
     public List<Weather> transitionWeathers;
+    [Tooltip("Probability of the weather happening between 0 and 1")]
+    public List<float> probability;
     public float weatherDuration = 3;
 
     // For weather transition
     [Header("Weather Effects")]
     [Tooltip("List of particle effects to player during the weather state")]
     public List<Effect> effects;
+
     [Tooltip("List of effect parameters particular to this weather state")]
     public List<EffectData> effectData;
 
@@ -50,7 +54,6 @@ public class Weather : MonoBehaviour
 
     public void ToggleWeather(bool isOn)
     {
-        //gameObject.SetActive(true);
         // Active time
         foreach (Effect effect in effects)
         {
@@ -65,20 +68,6 @@ public class Weather : MonoBehaviour
     public void SetSoundVolume(float volume)
     {
         soundVolume = volume;
-        soundPlayer.volume = volume;
+        soundPlayer.volume = soundVolume;
     }
-    //private void Update()
-    //{
-    //    if (effect != null)
-    //    {
-    //        effect.SetRange(effectRange);
-    //        effect.SetIntensity(effectIntensity);
-    //        effect.SetDirection(effectDirection);
-    //    }
-
-    //    if (lighting != null)
-    //    {
-    //        lighting.SetIntensity(lightIntensity);
-    //    }
-    //}
 }
