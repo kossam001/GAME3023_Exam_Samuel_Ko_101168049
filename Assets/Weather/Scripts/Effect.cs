@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
+    public string effectName;
+
     protected ParticleSystem weatherEffect;
     protected ParticleSystem.ShapeModule particleShape;
     protected ParticleSystem.EmissionModule particleEmission;
@@ -19,7 +21,7 @@ public class Effect : MonoBehaviour
 
     [Header("Effect Emission")]
     public float effectIntensity; // Changes
-    public float maxIntensity; // Mostly Fixed
+    //public float maxIntensity; // Mostly Fixed
 
     [Header("Effect Direction")]
     public Vector3 effectDirection = new Vector3(1, 1, 1);

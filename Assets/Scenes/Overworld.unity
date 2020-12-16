@@ -2335,10 +2335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbe915c0d7adf04b883106f41427410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectName: Overcast
   effectRange: {x: 20, y: 20, z: 1}
   effectIntensity: 0
-  maxIntensity: 1
-  effectDirection: {x: 0, y: -20, z: -20}
+  effectDirection: {x: 1, y: 0, z: 0}
 --- !u!199 &180459147
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -3676,9 +3676,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 0.9678273}
-        key1: {r: 0.67058825, g: 0.67058825, b: 0.67058825, a: 0.2509804}
-        key2: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+        key0: {r: 0, g: 0, b: 0, a: 0.19607843}
+        key1: {r: 0, g: 0, b: 0, a: 0.2509804}
+        key2: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0.19607843}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -3692,9 +3692,9 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 5783
+        atime0: 0
         atime1: 23516
-        atime2: 60716
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -12038,6 +12038,8 @@ MonoBehaviour:
   weatherDuration: 20
   effects:
   - {fileID: 1376097101}
+  effectData:
+  - {fileID: 11400000, guid: 105c4a70e131ceb4bb014e040855e262, type: 2}
   lightIntensity: 0.6
   soundVolume: 0
 --- !u!1 &249516764
@@ -14130,9 +14132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbe915c0d7adf04b883106f41427410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectName: 
   effectRange: {x: 1, y: 1, z: 1}
   effectIntensity: 0
-  maxIntensity: 0
   effectDirection: {x: 1, y: 1, z: 1}
 --- !u!4 &552160351
 Transform:
@@ -14693,6 +14695,7 @@ MonoBehaviour:
   transitionWeathers: []
   weatherDuration: 3
   effects: []
+  effectData: []
   lightIntensity: 2
   soundVolume: 0
 --- !u!4 &704540141
@@ -18615,9 +18618,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0a12b06925d9f428f88e0ddc1806c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectName: 
   effectRange: {x: 20, y: 20, z: 1}
   effectIntensity: 0
-  maxIntensity: 0
   effectDirection: {x: 1, y: -20, z: -20}
   lighting: {fileID: 757015351}
 --- !u!199 &1026873746
@@ -33359,9 +33362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbe915c0d7adf04b883106f41427410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectName: Rain
   effectRange: {x: 20, y: 20, z: 1}
   effectIntensity: 0
-  maxIntensity: 10
   effectDirection: {x: 0, y: -20, z: -20}
 --- !u!1 &1456948287
 GameObject:
@@ -33410,9 +33413,11 @@ MonoBehaviour:
   transitionWeathers:
   - {fileID: 1915270977}
   - {fileID: 238652697}
-  weatherDuration: 3
+  weatherDuration: 5
   effects:
   - {fileID: 180459146}
+  effectData:
+  - {fileID: 11400000, guid: eca4539a588dbd348a82f18f6aa60ada, type: 2}
   lightIntensity: 0.7
   soundVolume: 0
 --- !u!1 &1536209625
@@ -35894,6 +35899,7 @@ MonoBehaviour:
   - {fileID: 1456948289}
   weatherDuration: 3
   effects: []
+  effectData: []
   lightIntensity: 1
   soundVolume: 0
 --- !u!4 &1915270978

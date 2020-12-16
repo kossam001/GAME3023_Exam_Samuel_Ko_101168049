@@ -13,6 +13,9 @@ public class Weather : MonoBehaviour
 
     // For weather transition
     public List<Effect> effects;
+    public List<EffectData> effectData;
+
+    private Dictionary<string, EffectData> effectDataDict;
 
     //public Vector3 effectRange = new Vector3(1, 1, 1);
     //public float effectIntensity = 10;
@@ -23,16 +26,28 @@ public class Weather : MonoBehaviour
     public float lightIntensity = 1;
     public float soundVolume;
 
+    private void Start()
+    {
+        effectDataDict = new Dictionary<string, EffectData>();
+
+        // Create a dictionary for the effect for faster access
+        foreach (EffectData data in effectData)
+        {
+            effectDataDict.Add(data.associatedEffect, data);
+        }
+    }
+
     public void ToggleWeather(bool isOn)
     {
         //gameObject.SetActive(true);
         // Active time
         foreach (Effect effect in effects)
         {
-            //effect.gameObject.SetActive(isOn);
+            EffectData data = effectDataDict[effect.name];
+
             // Instead of turning the entire particle system off, keep on but stop emission
             // That way particles don't vanish into thin air
-            effect.SetIntensity(Convert.ToInt32(isOn) * effect.maxIntensity);
+            effect.SetIntensity(Convert.ToInt32(isOn) * data.effectIntensity);
         }
     }
 
