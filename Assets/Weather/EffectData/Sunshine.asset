@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039faa1edf9d503499d5466ee6b427ab, type: 3}
   m_Name: Sunshine
   m_EditorClassIdentifier: 
-  associatedEffect: 
+  associatedEffect: Sunshine
   effectRange: {x: 1, y: 1, z: 1}
-  effectIntensity: 10
-  effectDirection: {x: 1, y: 1, z: 1}
+  effectIntensity: 5
+  effectDirection: {x: 90, y: 1, z: 1}

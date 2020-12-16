@@ -12,8 +12,15 @@ public enum WeatherCondition
 
 public class WeatherController : MonoBehaviour
 {
+    [Tooltip("Do not change this during runtime")]
     public Weather currentWeather; // Starting weather
+
+    [Tooltip("Set this to change current weather")]
+    public Weather nextWeather; // The next weather
+    private Weather currentWeatherChecker; // Check if weather changed externally
+
     public Lighting lighting;
+    public float weatherTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -23,31 +30,47 @@ public class WeatherController : MonoBehaviour
 
     IEnumerator StartWeatherSystem()
     {
-        while (true)
+        nextWeather = null;
+
+        currentWeatherChecker = currentWeather;
+        weatherTimer = currentWeather.weatherDuration;
+
+        // Turn on current weather
+        currentWeather.ToggleWeather(true);
+        lighting.SetIntensity(currentWeather.lightIntensity);
+
+        // Using a timer instead of WaitFor so that the timer can be modified in the inspector
+        while (weatherTimer > 0)
         {
+            weatherTimer -= Time.deltaTime;
 
-
-            // Turn on current weather
-            currentWeather.ToggleWeather(true);
-            lighting.SetIntensity(currentWeather.lightIntensity);
-
-            yield return new WaitForSeconds(currentWeather.weatherDuration);
-
-            // Transition to next weather state
-
-            Weather nextWeather = currentWeather.transitionWeathers[Random.Range(0, currentWeather.transitionWeathers.Count)];
-            yield return StartCoroutine(WeatherTransition(currentWeather, nextWeather));
-
-            // Turn off current weather
-            currentWeather.ToggleWeather(false);
-            currentWeather = nextWeather;
+            yield return null;
         }
+
+        nextWeather = currentWeather.transitionWeathers[Random.Range(0, currentWeather.transitionWeathers.Count)];
+        StartCoroutine(TransitionWeather(nextWeather));
+    }
+
+    IEnumerator TransitionWeather(Weather nextWeather)
+    {
+        yield return StartCoroutine(WeatherTransition(currentWeather, nextWeather));
+
+        // Turn off current weather
+        currentWeather.ToggleWeather(false);
+        currentWeather = nextWeather;
+
+        StartCoroutine(StartWeatherSystem());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (nextWeather != null && weatherTimer > 0)
+        {
+            StopAllCoroutines();
+            weatherTimer = -1000;
+            StartCoroutine(TransitionWeather(nextWeather));
+        }
     }
 
     // https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/#how_to_use_lerp_in_unity
@@ -64,15 +87,5 @@ public class WeatherController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-
-        //StartCoroutine()
-
-
-        //from.effectDirection = to.effectDirection;
-        //from.effectIntensity = to.effectIntensity;
-        //from.effectRange = to.effectRange;
-
-        //from.lightIntensity = to.lightIntensity;
     }
 }
