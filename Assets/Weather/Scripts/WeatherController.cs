@@ -38,7 +38,7 @@ public class WeatherController : MonoBehaviour
         weatherTimer = currentWeather.weatherDuration;
 
         // Turn on current weather
-        currentWeather.ToggleWeather(true);
+        yield return currentWeather.TransitionEffects(true);
         lighting.SetIntensity(currentWeather.lightIntensity);
         currentWeather.SetSoundVolume(maxVolume);
 
@@ -70,9 +70,6 @@ public class WeatherController : MonoBehaviour
 
     IEnumerator TransitionWeather(Weather nextWeather)
     {
-        // Turn off current weather before transitioning because the particles takes time to despawn
-        currentWeather.ToggleWeather(false);
-
         yield return StartCoroutine(WeatherTransition(currentWeather, nextWeather));
 
         currentWeather = nextWeather;
@@ -100,34 +97,12 @@ public class WeatherController : MonoBehaviour
     }
 
     // Smoothly transition between weather states
-    // https://gamedevbeginner.com/the-right-way-to-lerp-in-unity-with-examples/#how_to_use_lerp_in_unity
     IEnumerator WeatherTransition(Weather from, Weather to)
     {
-        float duration = transitionDuration;
-        float elapsedTime = 0.0f;
-        float lightIntensity = from.lightIntensity;
+        StartCoroutine(currentWeather.TransitionLight(from, to, lighting));
+        StartCoroutine(currentWeather.TransitionSound(from, to, maxVolume));
 
-        float fromVolume = from.currentVolume;
-        float toVolume = to.currentVolume;
-
-        while (elapsedTime <= duration)
-        {
-            // Transition scene lighting
-            lightIntensity = Mathf.Lerp(from.lightIntensity, to.lightIntensity, elapsedTime / duration);
-            lighting.SetIntensity(lightIntensity);
-
-            // Turn off current sound
-            from.SetSoundVolume(Mathf.Lerp(fromVolume, 0, elapsedTime / duration));
-
-            // Turn on next sound
-            to.SetSoundVolume(Mathf.Lerp(toVolume, Mathf.Min(maxVolume, to.maxSoundVolume), elapsedTime / duration));
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        // Round out the volume
-        from.SetSoundVolume(0);
-        to.SetSoundVolume(Mathf.Min(maxVolume, to.maxSoundVolume));
+        // Wait for weather to completely transition
+        yield return StartCoroutine(currentWeather.TransitionEffects(false));
     }
 }
