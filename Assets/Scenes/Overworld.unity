@@ -11726,9 +11726,17 @@ PrefabInstance:
       propertyPath: useInstantEffectTransition
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8833699302855221704, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
+      propertyPath: weatherDuration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8833699303278690621, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
       propertyPath: useInstantEffectTransition
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833699303278690621, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
+      propertyPath: weatherDuration
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8833699304337303696, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
       propertyPath: useInstantEffectTransition
@@ -11785,6 +11793,10 @@ PrefabInstance:
     - target: {fileID: 8833699304802360208, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
       propertyPath: useInstantEffectTransition
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833699304802360208, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
+      propertyPath: weatherDuration
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
