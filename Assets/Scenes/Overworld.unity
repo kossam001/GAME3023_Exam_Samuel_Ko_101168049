@@ -11746,6 +11746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeatherSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 8833699304626119746, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
+      propertyPath: maxVolume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8833699304626119747, guid: 0546e4795d877c740b6971ecb8b73b14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 118.70201

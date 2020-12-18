@@ -29,7 +29,7 @@ public class Effect : MonoBehaviour
     public Vector3 effectDirection = new Vector3(1, 1, 1);
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         weatherEffect = GetComponent<ParticleSystem>();
 

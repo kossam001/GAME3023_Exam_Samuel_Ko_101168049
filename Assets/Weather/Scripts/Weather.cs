@@ -36,7 +36,7 @@ public class Weather : MonoBehaviour
     public float currentVolume = 0;
     private AudioSource soundPlayer;
 
-    private void Start()
+    private void Awake()
     {
         effectDataDict = new Dictionary<string, EffectData>();
 
